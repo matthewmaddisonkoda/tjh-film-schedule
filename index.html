@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jolly Heretic March Filming Schedule</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface-2: #f0eeeb;
+    --border: #e0ddd8;
+    --text: #1a1a1a;
+    --text-muted: #6b6560;
+    --accent: #5b4dc7;
+    --accent-light: #ededfc;
+    --warm: #c9600a;
+    --warm-light: #fef3eb;
+    --green: #1a7f42;
+    --green-light: #edf7f1;
+    --red: #c23030;
+    --red-light: #fdecea;
+    --blue: #2872b8;
+    --blue-light: #eaf2fb;
+    --pink: #a03a74;
+    --pink-light: #f9edf4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 72px 24px 56px;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/Background.png') center/cover no-repeat;
+    color: white;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero .flag-row { font-size: 2rem; margin-bottom: 12px; letter-spacing: 8px; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: white;
+  }
+  .hero .subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+  }
+  .hero .dates-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fdb99b;
+  }
+
+  /* Content */
+  .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Crew cards */
+  .crew-section { margin-bottom: 48px; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .crew-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .crew-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .crew-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .crew-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin: 0 auto 10px;
+  }
+  .crew-card h3 { font-size: 0.95rem; font-weight: 700; }
+  .crew-card .role { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+  .crew-card .route { font-size: 0.75rem; color: var(--warm); margin-top: 6px; font-weight: 600; }
+
+  /* Timeline */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--warm), var(--green), var(--blue), var(--pink));
+    border-radius: 2px;
+  }
+
+  .day-block { margin-bottom: 48px; position: relative; }
+  .day-marker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .day-dot {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    border: 3px solid var(--bg);
+  }
+  .day-info h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .day-info .day-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .day-content { padding-left: 66px; }
+
+  .event-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.2s;
+  }
+  .event-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .event-time {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--warm);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .event-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .event-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .event-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+  }
+  .tag-filming { background: var(--red-light); color: var(--red); }
+  .tag-travel { background: var(--blue-light); color: var(--blue); }
+  .tag-social { background: var(--accent-light); color: var(--accent); }
+  .tag-food { background: var(--warm-light); color: var(--warm); }
+  .tag-hotel { background: var(--green-light); color: var(--green); }
+  .tag-prep { background: var(--pink-light); color: var(--pink); }
+
+  /* Sun info bar */
+  .sun-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    background: var(--warm-light);
+    border: 1px solid #f0dcc8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--warm);
+  }
+  .sun-bar span { white-space: nowrap; }
+
+  /* Person badges */
+  .people {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .person-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+  .badge-lap { background: var(--accent-light); color: var(--accent); }
+  .badge-matt { background: var(--blue-light); color: var(--blue); }
+  .badge-ed { background: var(--warm-light); color: var(--warm); }
+  .badge-george { background: var(--green-light); color: var(--green); }
+
+  /* Production doc cards */
+  .doc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+  .doc-card.doc-slough::before { background: linear-gradient(90deg, var(--red), var(--warm)); }
+  .doc-card.doc-oxford::before { background: linear-gradient(90deg, var(--accent), var(--blue)); }
+  .doc-card.doc-luton::before { background: linear-gradient(90deg, var(--warm), var(--pink)); }
+
+  .doc-number {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .doc-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+  }
+  .doc-card .doc-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .doc-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .doc-meta-item {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .doc-meta-item strong { color: var(--text); font-weight: 600; }
+
+  /* Schedule table */
+  .schedule-block {
+    margin-top: 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .schedule-header {
+    padding: 12px 18px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .sched-morning { background: var(--warm-light); color: var(--warm); }
+  .sched-midday { background: var(--red-light); color: var(--red); }
+  .sched-afternoon { background: var(--accent-light); color: var(--accent); }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+  }
+  .schedule-row .sched-time {
+    padding: 10px 14px;
+    font-weight: 600;
+    color: var(--warm);
+    border-right: 1px solid var(--border);
+    font-size: 0.75rem;
+  }
+  .schedule-row .sched-activity {
+    padding: 10px 14px;
+    color: var(--text-muted);
+  }
+  .schedule-row .sched-activity strong { color: var(--text); }
+
+  /* Prep checklist */
+  .checklist { margin-top: 16px; }
+  .checklist-item {
+    padding: 8px 0 8px 28px;
+    text-indent: -28px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--surface-2);
+    line-height: 1.6;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-icon { margin-right: 8px; }
+
+  /* Expandable sections */
+  .expandable-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 14px 18px;
+    background: var(--surface-2);
+    border-radius: 10px;
+    margin-top: 12px;
+    transition: background 0.2s;
+  }
+  .expandable-header:hover { background: #e8e5e0; }
+  .expandable-header h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .expand-arrow {
+    transition: transform 0.3s;
+    color: var(--text-muted);
+  }
+  .expandable-header.open .expand-arrow { transform: rotate(180deg); }
+  .expandable-body {
+    display: none;
+    padding: 14px 18px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .expandable-body.open { display: block; }
+
+  /* Graph images */
+  .graph-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .graph-grid img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #14161e;
+  }
+  .graph-caption {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* Sticky nav */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .sticky-nav a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .sticky-nav a:hover, .sticky-nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* Expand all / collapse all */
+  .expand-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .expand-btn {
+    padding: 6px 14px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .expand-btn:hover {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* Interactive checkboxes */
+  .checklist-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+    accent-color: var(--green);
+    cursor: pointer;
+  }
+  .checklist-item.checked {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  /* Search */
+  .search-bar {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-bar input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+  .search-bar input::placeholder { color: var(--text-muted); }
+  .search-bar .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .search-bar .search-clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: none;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .search-bar .search-clear.visible { display: block; }
+  .search-highlight { background: #fef08a; color: #1a1a1a; border-radius: 2px; padding: 0 1px; }
+  .search-no-match { display: none !important; }
+
+  /* Scroll to top */
+  .scroll-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(91,77,199,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .scroll-top:hover { transform: scale(1.1); }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 20px 40px; }
+    .timeline::before { left: 16px; }
+    .day-dot { width: 40px; height: 40px; font-size: 1.1rem; }
+    .day-content { padding-left: 56px; }
+    .crew-grid { grid-template-columns: repeat(2, 1fr); }
+    .schedule-row { grid-template-columns: 70px 1fr; }
+    .sun-bar { gap: 8px; font-size: 0.65rem; }
+    .expandable-header { padding: 16px 18px; min-height: 52px; }
+    .expandable-header h4 { font-size: 0.9rem; }
+    .sticky-nav a { padding: 10px 12px; font-size: 0.65rem; }
+    .scroll-top { bottom: 18px; right: 18px; width: 40px; height: 40px; }
+  }
+
+  /* Print styles */
+  @media print {
+    .sticky-nav, .search-bar, .expand-controls, .scroll-top { display: none !important; }
+    .hero { padding: 32px 16px; background: #2d2557 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .expandable-body { display: block !important; }
+    .expandable-header .expand-arrow { display: none; }
+    .expandable-header { cursor: default; background: var(--surface-2) !important; }
+    .event-card, .doc-card, .crew-card { break-inside: avoid; }
+    .day-block { break-inside: avoid; }
+    body { font-size: 10pt; }
+    .container { max-width: 100%; padding: 20px; }
+    .graph-grid img { max-height: 300px; object-fit: contain; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="flag-row">&#127468;&#127463; &#127909; &#127891;</div>
+    <h1>Jolly Heretic March Filming Schedule</h1>
+    <p class="subtitle">Slough &rarr; Oxford &rarr; Luton &mdash; Three films, one week</p>
+    <div class="dates-badge">MAR 1 &ndash; MAR 6, 2026</div>
+  </div>
+</section>
+
+<!-- Sticky Nav -->
+<nav class="sticky-nav" id="sticky-nav">
+  <a href="#day-1">Sun 1</a>
+  <a href="#day-2">Mon 2</a>
+  <a href="#day-3">Tue 3</a>
+  <a href="#day-4">Wed 4</a>
+  <a href="#day-5">Thu 5</a>
+  <a href="#day-6">Fri 6</a>
+  <a href="#doc-slough">Slough</a>
+  <a href="#doc-oxford">Oxford</a>
+  <a href="#doc-luton">Luton</a>
+  <a href="#prep">Prep</a>
+</nav>
+
+<div class="container">
+
+  <!-- Search -->
+  <div class="search-bar">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="search-input" placeholder="Search schedule, locations, notes...">
+    <button class="search-clear" id="search-clear" onclick="clearSearch()">&times;</button>
+  </div>
+
+  <!-- Expand controls -->
+  <div class="expand-controls">
+    <button class="expand-btn" onclick="expandAll()">&#9660; Expand All</button>
+    <button class="expand-btn" onclick="collapseAll()">&#9650; Collapse All</button>
+  </div>
+
+  <!-- Crew -->
+  <div class="crew-section">
+    <div class="section-label">The Crew</div>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-avatar" style="background:var(--accent-light);">&#127911;</div>
+        <h3>Lap</h3>
+        <div class="role">Guest / On-Camera</div>
+        <div class="route">NYC &rarr; London &bull; Feb 28</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar" style="background:var(--blue-light);">&#127909;</div>
+        <h3>Matthew</h3>
+        <div class="role">Producer / Camera</div>
+        <div class="route">Antalya &rarr; London &bull; Mar 1</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar" style="background:var(--warm-light);">&#127891;</div>
+        <h3>Ed Dutton</h3>
+        <div class="role">Presenter</div>
+        <div class="route">Oulu &rarr; London &bull; Mar 1</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar" style="background:var(--green-light);">&#128188;</div>
+        <h3>George</h3>
+        <div class="role">Manager</div>
+        <div class="route">Arrives London &bull; Mar 1</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCHEDULE TIMELINE ==================== -->
+  <div class="section-label">Day by Day</div>
+  <div class="timeline">
+
+    <!-- Day 1: Mar 1 (Sunday) -->
+    <div class="day-block" id="day-1">
+      <div class="day-marker">
+        <div class="day-dot" style="background:var(--accent-light); color:var(--accent);">&#127758;</div>
+        <div class="day-info">
+          <h2>Sunday, Mar 1</h2>
+          <div class="day-subtitle">Everyone Arrives in London</div>
+        </div>
+      </div>
+      <div class="day-content">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:44</span>
+          <span>&#127751; Sunset 17:42</span>
+          <span>&#127777;&#65039; London ~5&ndash;9&deg;C</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Throughout the day</div>
+          <div class="event-title">Crew assembles in London</div>
+          <div class="event-desc">Ed arrives from Oulu via Heathrow &mdash; stays at his parents' in New Malden. George arrives and stays nearby. Matthew arrives from Antalya. Lap already in London (arrived Feb 28).</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-george">GEORGE</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+          </div>
+          <span class="event-tag tag-travel">TRAVEL</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Evening</div>
+          <div class="event-title">Free evening &mdash; early night</div>
+          <div class="event-desc">Dinner in London. Early night &mdash; big filming day tomorrow.</div>
+          <div class="people">
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-matt">MATT</span>
+          </div>
+          <span class="event-tag tag-social">SOCIAL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2: Mar 2 (Monday) — SLOUGH -->
+    <div class="day-block" id="day-2">
+      <div class="day-marker">
+        <div class="day-dot" style="background:var(--red-light); color:var(--red);">&#127916;</div>
+        <div class="day-info">
+          <h2>Monday, Mar 2</h2>
+          <div class="day-subtitle">Filming Day 1 &mdash; Slough</div>
+        </div>
+      </div>
+      <div class="day-content">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:42</span>
+          <span>&#127751; Sunset 17:44</span>
+          <span>&#127774; Golden hour from ~17:00</span>
+          <span>&#127777;&#65039; Slough ~5&ndash;10&deg;C</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">All Day &bull; Hard wrap by 5&ndash;6pm</div>
+          <div class="event-title">Documentary #1 &mdash; "The View From the Castle" (Slough)</div>
+          <div class="event-desc">Full day filming across Windsor, Eton &amp; Slough. The Long Walk, Windsor Castle walls, Eton High Street, the bridge walk, Slough town centre. Must wrap by 5&ndash;6pm so Ed can make dinner with his daughter in London.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-george">GEORGE</span>
+          </div>
+          <span class="event-tag tag-filming">FILMING</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">~6pm onwards</div>
+          <div class="event-title">Ed &rarr; Dinner with daughter (London)</div>
+          <div class="event-desc">Ed heads off for family dinner. George, Matthew, and Lap stay at London hotel.</div>
+          <div class="people">
+            <span class="person-badge badge-george">GEORGE</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+          </div>
+          <span class="event-tag tag-hotel">HOTEL &bull; LONDON</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3: Mar 3 (Tuesday) -->
+    <div class="day-block" id="day-3">
+      <div class="day-marker">
+        <div class="day-dot" style="background:var(--blue-light); color:var(--blue);">&#127891;</div>
+        <div class="day-info">
+          <h2>Tuesday, Mar 3</h2>
+          <div class="day-subtitle">Andrew Gold Interview &amp; Oxford</div>
+        </div>
+      </div>
+      <div class="day-content">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:40</span>
+          <span>&#127751; Sunset 17:46</span>
+          <span>&#127777;&#65039; Oxford ~4&ndash;9&deg;C</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Daytime</div>
+          <div class="event-title">Ed interviews with Andrew Gold</div>
+          <div class="event-desc">Ed does an interview in North London with Andrew Gold. George, Matt, and Lap can head to Oxford early or explore London.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+          </div>
+          <span class="event-tag tag-social">INTERVIEW</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Afternoon</div>
+          <div class="event-title">Everyone converges on Oxford</div>
+          <div class="event-desc">Ed heads to Oxford after the interview &mdash; likely via King's Cross St Pancras (~1hr train). Crew makes their way to Oxford independently.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-george">GEORGE</span>
+          </div>
+          <span class="event-tag tag-travel">TRAVEL</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Evening</div>
+          <div class="event-title">Secret Society Dinner &amp; Speech</div>
+          <div class="event-desc">Ed has a dinner engagement and gives a speech at a secret society in Oxford. Matthew attends post-dinner.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-matt">MATT</span>
+          </div>
+          <span class="event-tag tag-social">SECRET SOCIETY</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Night</div>
+          <div class="event-title">Oxford Hotel</div>
+          <div class="event-desc">George, Matthew, and Lap stay overnight in Oxford.</div>
+          <div class="people">
+            <span class="person-badge badge-george">GEORGE</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+          </div>
+          <span class="event-tag tag-hotel">HOTEL &bull; OXFORD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4: Mar 4 (Wednesday) — OXFORD -->
+    <div class="day-block" id="day-4">
+      <div class="day-marker">
+        <div class="day-dot" style="background:var(--green-light); color:var(--green);">&#127916;</div>
+        <div class="day-info">
+          <h2>Wednesday, Mar 4</h2>
+          <div class="day-subtitle">Filming Day 2 &mdash; Oxford</div>
+        </div>
+      </div>
+      <div class="day-content">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:40</span>
+          <span>&#127751; Sunset 17:46</span>
+          <span>&#127774; Golden hour from ~17:00</span>
+          <span>&#127777;&#65039; Oxford ~4&ndash;9&deg;C</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">All Day</div>
+          <div class="event-title">Documentary #2 &mdash; "The Grooming Gang City" (Oxford)</div>
+          <div class="event-desc">Full day filming: Radcliffe Camera to Cowley Road walk, Nanford Guest House site, Shotover Woods, vox pops. Possible segment: masked student interviews from secret society contacts.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-george">GEORGE</span>
+          </div>
+          <span class="event-tag tag-filming">FILMING</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">Evening &bull; ~1hr 15min drive</div>
+          <div class="event-title">Drive to Luton &amp; check in</div>
+          <div class="event-desc">Oxford &rarr; Luton via M40/M25/M1. Check into hotel for early 07:00 start Thursday. Suggestion: Premier Inn Luton Town Centre or Hampton by Hilton (airport).</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-george">GEORGE</span>
+          </div>
+          <span class="event-tag tag-hotel">HOTEL &bull; LUTON</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 5: Mar 5 (Thursday) — LUTON -->
+    <div class="day-block" id="day-5">
+      <div class="day-marker">
+        <div class="day-dot" style="background:var(--pink-light); color:var(--pink);">&#127916;</div>
+        <div class="day-info">
+          <h2>Thursday, Mar 5</h2>
+          <div class="day-subtitle">Filming Day 3 &mdash; Luton</div>
+        </div>
+      </div>
+      <div class="day-content">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:38</span>
+          <span>&#127751; Sunset 17:48</span>
+          <span>&#127774; Golden hour from ~17:00</span>
+          <span>&#127909; Wrap: 18:00</span>
+          <span>&#127777;&#65039; Luton ~4&ndash;9&deg;C</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">07:00 &ndash; 18:00 &bull; Full Day</div>
+          <div class="event-title">Documentary #3 &mdash; "The Death of a Factory Town" (Luton)</div>
+          <div class="event-desc">Full day shoot: Vauxhall plant site (07:45&ndash;11:30), Bury Park walking footage (12:00&ndash;14:00), drive to Dunstable (14:00&ndash;15:00), Dunstable vox pops (15:00&ndash;16:00), closing money shot at golden hour with airport + empty factory (17:00&ndash;17:45). See full schedule in the Luton doc card below.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-george">GEORGE</span>
+          </div>
+          <span class="event-tag tag-filming">FILMING</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">After wrap ~18:00</div>
+          <div class="event-title">Crew disperses</div>
+          <div class="event-desc">Ed heads back to London. George goes to London hotel (flies home Friday). Lap and Matthew stay together &mdash; potentially onward to Europe.</div>
+          <div class="people">
+            <span class="person-badge badge-ed">ED</span>
+            <span class="person-badge badge-george">GEORGE</span>
+            <span class="person-badge badge-matt">MATT</span>
+            <span class="person-badge badge-lap">LAP</span>
+          </div>
+          <span class="event-tag tag-travel">TRAVEL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 6: Mar 6 (Friday) -->
+    <div class="day-block" id="day-6">
+      <div class="day-marker">
+        <div class="day-dot" style="background:linear-gradient(135deg, var(--warm-light), var(--accent-light));">&#9728;&#65039;</div>
+        <div class="day-info">
+          <h2>Friday, Mar 6</h2>
+          <div class="day-subtitle">Wrap &mdash; George flies home</div>
+        </div>
+      </div>
+      <div class="day-content">
+        <div class="event-card">
+          <div class="event-time">Morning</div>
+          <div class="event-title">George flies home</div>
+          <div class="event-desc">George heads to the airport from London and flies home. That's a wrap on the production crew.</div>
+          <div class="people">
+            <span class="person-badge badge-george">GEORGE</span>
+          </div>
+          <span class="event-tag tag-travel">TRAVEL</span>
+        </div>
+        <div class="event-card">
+          <div class="event-time">TBD</div>
+          <div class="event-title">Lap &amp; Matt &rarr; onward plans TBD</div>
+          <div class="event-desc">With filming wrapped, Lap and Matthew potentially fly somewhere warm in Europe for a few days.</div>
+          <div class="people">
+            <span class="person-badge badge-lap">LAP</span>
+            <span class="person-badge badge-matt">MATT</span>
+          </div>
+          <span class="event-tag tag-travel">ADVENTURE</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+
+  <!-- ==================== THE THREE DOCUMENTARIES ==================== -->
+  <div style="margin-top:56px;">
+    <div class="section-label">The Three Documentaries</div>
+
+    <!-- Doc 1: Slough -->
+    <div class="doc-card doc-slough" id="doc-slough">
+      <div class="doc-number">Documentary I &bull; Monday, Mar 2</div>
+      <h3>The View From the Castle</h3>
+      <div class="doc-sub">Windsor Castle looks directly down on Slough. Two civilisations separated by a dual carriageway.</div>
+      <div class="doc-meta">
+        <div class="doc-meta-item"><strong>Location:</strong> Windsor, Eton &amp; Slough</div>
+        <div class="doc-meta-item"><strong>Format:</strong> Long-form YouTube + possible 5-min Short</div>
+        <div class="doc-meta-item"><strong>Hard Stop:</strong> 5&ndash;6pm (Ed's dinner in London)</div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:42</span>
+          <span>&#127751; Sunset 17:44</span>
+          <span>&#127774; Golden hour ~17:00</span>
+        </div>
+      </div>
+
+      <!-- The Frame -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127916; The Frame</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p>Windsor Castle &mdash; the literal seat of the British monarchy &mdash; looks directly down on Slough. On a clear day you can see the Slough Trading Estate from the castle walls. The Queen&rsquo;s funeral procession drove through Windsor while Slough, 2 miles away, is <strong>65% non-white, 44% foreign-born, nearly 30% Muslim</strong>.</p>
+        <br>
+        <p>The frame isn&rsquo;t Slough vs Eton. It&rsquo;s <strong>Slough vs Windsor</strong>. Eton is a school. Windsor is the symbolic heart of the British state, the monarchy, the nation&rsquo;s self-image. And it sits on top of a town that is demographically unrecognisable as English.</p>
+        <br>
+        <p>The question becomes: <strong>What does it mean that the institution that symbolises Britain sits within eyeshot of a town where White British people are now one-third of the population?</strong> This isn&rsquo;t about whether that&rsquo;s good or bad &mdash; it&rsquo;s about the surreal disconnect between national identity and demographic reality. The Crown represents continuity. Slough represents the most rapid transformation of any town in southern England.</p>
+      </div>
+
+      <!-- The Bridge Shot -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127910; The Bridge Shot &mdash; Eton to Slough</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p>The most visually economical version. Eton and Slough are connected by a single bridge &mdash; <strong>Windsor Bridge over the Thames</strong>. On one side: Eton High Street, the most exclusive school in the world, boys in tailcoats, a village that has looked essentially the same for 500 years. On the other side: Slough High Street, 65% non-white, halal butchers, sari shops, money transfer services.</p>
+        <br>
+        <p><strong>The 5-minute Short:</strong> A continuous walking shot from Eton College to Slough town centre. No narration needed. Let the camera tell the story. Then Dutton does a PTC at the midpoint of the bridge.</p>
+      </div>
+
+      <!-- The Dutton Angle -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127891; The Dutton Angle</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p>This is <strong>ethnocentric sorting made physical</strong>. The Thames isn&rsquo;t just a river &mdash; it&rsquo;s a moat. The elite retreat behind geographic barriers (rivers, property prices, school catchments) that function identically to castle walls.</p>
+        <br>
+        <p><strong>Eton has always been a fortress.</strong> Now it&rsquo;s a fortress against demographic change as well.</p>
+        <br>
+        <p>The evolutionary psychology angle: elites throughout history have maintained in-group cohesion by retreating behind barriers &mdash; geographic, economic, institutional. Windsor and Eton are the most extreme British example. The institution that represents the nation has insulated itself completely from the transformation of the nation.</p>
+      </div>
+
+      <!-- Filmable Locations -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128205; Filmable Locations &amp; Shot List</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>The Long Walk, Windsor</strong> &mdash; The avenue leading to the castle, looking south toward Slough. Opening shot. Drone if permitted.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Windsor Castle walls</strong> &mdash; The view down onto Slough. Establish the literal elevation &mdash; the monarchy looks down on what Britain has become.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Eton High Street</strong> &mdash; Boys in tailcoats. The village frozen in time. 500 years unchanged.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Windsor Bridge</strong> &mdash; The midpoint. Dutton PTC here. One side Eton, the other side Slough. The Thames as moat.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Slough High Street &amp; town centre</strong> &mdash; 65% non-white, the transformation made visible. Halal butchers, sari shops, money transfer services.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Slough Trading Estate</strong> &mdash; The largest industrial estate in single private ownership in Europe. Context for how Slough became what it is.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>The dual carriageway</strong> &mdash; The physical border between Windsor and Slough. Two civilisations, one road apart.</div>
+        </div>
+        <br>
+        <p><strong>The visual thesis:</strong> Film from the Long Walk looking south toward Slough. Then drive 5 minutes into Slough town centre. Two completely different civilisations, separated by a dual carriageway. The continuous bridge walk (Eton &rarr; Slough) works as both a documentary sequence and a standalone Short.</p>
+      </div>
+
+      <!-- Key Stats -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128202; Key Stats &mdash; Slough</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>White British:</strong> ~33% (2021 Census) &mdash; down from 58% in 2001</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>Non-white:</strong> ~65%</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>Foreign-born:</strong> ~44% of residents</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>Muslim:</strong> ~28%</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>Pakistani/Bangladeshi:</strong> largest single ethnic group after White British</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>Windsor (Royal Borough):</strong> ~77% White British &mdash; 2 miles away</div>
+        </div>
+      </div>
+
+      <!-- Slough Research Graphs -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128202; Research Data &amp; Graphs</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p style="margin-bottom:12px;">Data graphics for post-production overlays or PTC reference.</p>
+        <div class="graph-grid">
+          <img src="images/slough_01_ethnicity.png" alt="Slough ethnic composition 2001-2021" loading="lazy">
+          <p class="graph-caption">Slough ethnic composition across three census periods (2001, 2011, 2021). White British: 58% &rarr; 33%.</p>
+
+          <img src="images/slough_02_vs_windsor.png" alt="Slough vs Windsor comparison" loading="lazy">
+          <p class="graph-caption">Two miles apart, two different worlds: Slough Borough vs Royal Borough of Windsor &amp; Maidenhead.</p>
+
+          <img src="images/slough_03_wb_trajectory.png" alt="Slough White British trajectory 1991-2031" loading="lazy">
+          <p class="graph-caption">White British population decline &mdash; 72% (1991) to 33% (2021), projected ~25% by 2031.</p>
+
+          <img src="images/slough_04_eton_bridge.png" alt="One bridge two worlds - Eton vs Slough" loading="lazy">
+          <p class="graph-caption">One bridge, two worlds: Eton Village vs Slough Town Centre stat comparison.</p>
+
+          <img src="images/slough_05_foreign_born.png" alt="Slough foreign-born population" loading="lazy">
+          <p class="graph-caption">44% of Slough residents were born outside the UK &mdash; higher than London (37%).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 2: Oxford -->
+    <div class="doc-card doc-oxford" id="doc-oxford">
+      <div class="doc-number">Documentary II &bull; Wednesday, Mar 4</div>
+      <h3>The Grooming Gang City That Nobody Mentions</h3>
+      <div class="doc-sub">Oxford: Where the brand of the university shields the city from scrutiny</div>
+      <div class="doc-meta">
+        <div class="doc-meta-item"><strong>Location:</strong> Oxford &mdash; Cowley, Iffley Road, Shotover, city centre</div>
+        <div class="doc-meta-item"><strong>Format:</strong> Long-form YouTube</div>
+        <div class="doc-meta-item"><strong>Evening:</strong> Drive to Luton (~1hr 15min)</div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:40</span>
+          <span>&#127751; Sunset 17:46</span>
+          <span>&#127774; Golden hour ~17:00</span>
+        </div>
+      </div>
+
+      <!-- The Angle -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127916; The Angle</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p>Oxford had one of the most horrific grooming gang cases in England &mdash; <strong>Operation Bullfinch</strong> &mdash; and it gets almost no attention compared to Rotherham, Rochdale, or Telford. The reason is obvious: &ldquo;Oxford&rdquo; conjures the university, not grooming gangs. The brand protects the city from scrutiny.</p>
+        <br>
+        <p>This is the strongest unique angle for this doc. Nobody has told this story properly on YouTube.</p>
+      </div>
+
+      <!-- The Facts -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128203; The Facts &mdash; Operations Bullfinch, Silk &amp; Spur</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>22 men convicted</strong> across Operations Bullfinch (2011), Silk (2015&ndash;2018), and Spur</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> <strong>Estimated 373 children targeted</strong> over 16 years (1998&ndash;2014)</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Victims were white girls aged 11&ndash;15, overwhelmingly from <strong>care homes and council estates</strong> on the south/east side of the city</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Abuse centred in the <strong>Cowley area</strong> &mdash; the neighbourhood with the highest Pakistani concentration in Oxford</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Perpetrators were predominantly Pakistani-heritage men working as <strong>taxi drivers, takeaway workers, hospital porters, security guards</strong> &mdash; the night-time economy</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Girls were abused in flats, guest houses (the <strong>Nanford Guest House</strong> on Iffley Road), parks, churchyards, and <strong>Shotover Woods</strong>. One 12-year-old was branded, forced into a backstreet abortion, and sold for sex at &pound;600 a time</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Girls were trafficked to <strong>Bradford, Leeds, London, Slough, and Bournemouth</strong></div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Thames Valley Police were alerted at least <strong>six times</strong> by victims before anyone acted. Officers found a 13-year-old hiding in a car with an adult male, condoms nearby &mdash; and did nothing</div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Social services blamed the girls for <strong>&ldquo;making bad choices&rdquo;</strong></div>
+          <div class="checklist-item"><span class="check-icon">&#128204;</span> Five perpetrators received life sentences; total sentences exceeded <strong>250 years</strong></div>
+        </div>
+        <br>
+        <p>The Serious Case Review explicitly stated that the association between group-based CSE and men of Pakistani heritage was <strong>&ldquo;undeniable.&rdquo;</strong></p>
+        <p>Dr. Taj Hargey, imam of the Oxford Islamic Congregation, publicly stated that race and religion were <strong>&ldquo;inextricably linked&rdquo;</strong> to the grooming phenomenon.</p>
+      </div>
+
+      <!-- The Dutton Angle -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127891; The Dutton Angle</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p>The grooming happened in precisely the zone where the two populations overlap &mdash; the <strong>south/east estates</strong> where white working-class girls from care homes encountered Pakistani-heritage men in the night-time economy.</p>
+        <br>
+        <p>The affluent <strong>north/west of the city was completely untouched</strong>. The girls were selected because they were vulnerable, white, from broken families, in care &mdash; the very population that had lost its social infrastructure.</p>
+        <br>
+        <p>The university colleges, <strong>a mile away, were utterly oblivious</strong>.</p>
+        <br>
+        <p>This is a story about two Oxfords that exist in parallel &mdash; one world-famous, the other invisible. The brand of the former shields the latter from scrutiny.</p>
+      </div>
+
+      <!-- Filmable Locations -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128205; Filmable Locations</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Cowley Road</strong> &mdash; The street where victims were first spotted and groomed. Walk it with Dutton, show the night-time economy.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Nanford Guest House site</strong> (Iffley Road) &mdash; Where much of the abuse happened. Exterior shots.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Shotover Woods</strong> &mdash; Where a girl was left overnight after being gang-raped. Atmospheric, quiet, harrowing context.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Travelodge</strong> &mdash; Another location used by perpetrators.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>Care homes in Henley-on-Thames</strong> &mdash; Where girls were collected by perpetrators and driven to Oxford.</div>
+          <div class="checklist-item"><span class="check-icon">&#128205;</span> <strong>The Radcliffe Camera</strong> &mdash; 10 minutes from Cowley. A different planet. The contrast shot that makes the documentary.</div>
+        </div>
+        <br>
+        <p><strong>The visual thesis:</strong> Walk from the Radcliffe Camera to Cowley Road. It&rsquo;s a 10-minute walk between two worlds that never acknowledge each other.</p>
+      </div>
+
+      <!-- Bonus: Masked Student Interviews -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#11088; Bonus: Masked Secret Society Student Interviews (TBD)</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p>If students from the secret society speech (Tuesday evening) are willing, film interviews with them <strong>wearing masks</strong> and ask controversial questions. Could be a powerful segment or standalone short. Depends on willingness and atmosphere &mdash; feel it out on the night.</p>
+      </div>
+
+      <!-- Oxford Research Graphs -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128202; Research Data &amp; Graphs</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p style="margin-bottom:12px;">Data graphics for post-production overlays or PTC reference.</p>
+        <div class="graph-grid">
+          <img src="images/oxford_01_two_cities.png" alt="Oxford two cities comparison" loading="lazy">
+          <p class="graph-caption">Two cities, one mile apart: North/West Oxford (University) vs South/East Oxford (Cowley, estates).</p>
+
+          <img src="images/oxford_02_grooming_timeline.png" alt="Oxford grooming operations timeline" loading="lazy">
+          <p class="graph-caption">Oxford grooming gang timeline: Operations Bullfinch, Silk &amp; Spur. 22 men convicted, 373 children targeted.</p>
+
+          <img src="images/oxford_03_radcliffe_vs_cowley.png" alt="Radcliffe Camera vs Cowley Road" loading="lazy">
+          <p class="graph-caption">Ten minutes apart, two different planets: The University vs Cowley/East Oxford.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 3: Luton -->
+    <div class="doc-card doc-luton" id="doc-luton">
+      <div class="doc-number">Documentary III &bull; Thursday, Mar 5</div>
+      <h3>The Death of a Factory Town</h3>
+      <div class="doc-sub">Luton: Deindustrialisation, demographic change, and the unmaking of an English town</div>
+      <div class="doc-meta">
+        <div class="doc-meta-item"><strong>Location:</strong> Luton, Bedfordshire</div>
+        <div class="doc-meta-item"><strong>Format:</strong> Long-form YouTube (25&ndash;40 min)</div>
+        <div class="doc-meta-item"><strong>Presenter:</strong> Prof. Edward Dutton</div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="sun-bar">
+          <span>&#127749; Sunrise 06:38</span>
+          <span>&#127751; Sunset 17:48</span>
+          <span>&#127774; Golden hour from ~17:00</span>
+          <span>&#128247; Money shot: 17:00&ndash;17:45</span>
+        </div>
+      </div>
+
+      <!-- Luton Schedule -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128197; Full Shooting Schedule</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <!-- Morning -->
+        <div class="schedule-block">
+          <div class="schedule-header sched-morning">Morning Block &bull; 07:00 &ndash; 12:00 &mdash; "The Factory"</div>
+          <div class="schedule-row"><div class="sched-time">07:00</div><div class="sched-activity"><strong>Crew call</strong> &mdash; Kit check, breakfast, load car</div></div>
+          <div class="schedule-row"><div class="sched-time">07:30</div><div class="sched-activity"><strong>Drive to Vauxhall site</strong> &mdash; Kimpton Road, LU2 (10 min from centre)</div></div>
+          <div class="schedule-row"><div class="sched-time">07:45</div><div class="sched-activity"><strong>Exterior filming</strong> &mdash; Factory gates, perimeter, empty car parks. Drone if airspace permits. Early light is ideal.</div></div>
+          <div class="schedule-row"><div class="sched-time">09:00</div><div class="sched-activity"><strong>Dutton PTC #1</strong> &mdash; Factory history &amp; closure. In front of gates. Key line: 37,000 jobs to zero.</div></div>
+          <div class="schedule-row"><div class="sched-time">09:30</div><div class="sched-activity"><strong>Vox pops</strong> &mdash; Former Vauxhall workers. Try local pubs, Farley Hill estate area. Be patient &mdash; these are gold if they open up.</div></div>
+          <div class="schedule-row"><div class="sched-time">11:00</div><div class="sched-activity"><strong>B-roll</strong> &mdash; Farley Hill estate context footage.</div></div>
+          <div class="schedule-row"><div class="sched-time">11:30</div><div class="sched-activity"><strong>Break</strong> &mdash; Review footage, grab food, identify gaps.</div></div>
+        </div>
+        <!-- Midday -->
+        <div class="schedule-block" style="margin-top:12px;">
+          <div class="schedule-header sched-midday">Midday Block &bull; 12:00 &ndash; 15:00 &mdash; "What Arrived"</div>
+          <div class="schedule-row"><div class="sched-time">12:00</div><div class="sched-activity"><strong>Bury Park walking footage</strong> &mdash; Dunstable Road, street life, shops. Lunchtime = busy = better footage. Visible camera, don't be covert.</div></div>
+          <div class="schedule-row"><div class="sched-time">13:00</div><div class="sched-activity"><strong>Dutton PTC #2</strong> &mdash; Evolutionary psychology of ethnic clustering. Keep it analytical.</div></div>
+          <div class="schedule-row"><div class="sched-time">13:30</div><div class="sched-activity"><strong>Optional vox pops</strong> &mdash; Bury Park residents (if atmosphere allows). If hostile, move on.</div></div>
+          <div class="schedule-row"><div class="sched-time">14:00</div><div class="sched-activity"><strong>Drive to Dunstable</strong> &mdash; A505 north. Film the transition &mdash; dashcam the drive, the drive IS the shot.</div></div>
+          <div class="schedule-row"><div class="sched-time">14:15</div><div class="sched-activity"><strong>Dutton PTC #3</strong> &mdash; The demographic boundary. Census data overlay. Can do roadside or at borough boundary.</div></div>
+        </div>
+        <!-- Afternoon -->
+        <div class="schedule-block" style="margin-top:12px;">
+          <div class="schedule-header sched-afternoon">Afternoon Block &bull; 15:00 &ndash; 18:00 &mdash; "What Left" + Closing</div>
+          <div class="schedule-row"><div class="sched-time">15:00</div><div class="sched-activity"><strong>Dunstable vox pops</strong> &mdash; High street. Former Luton residents. Listen for the euphemisms.</div></div>
+          <div class="schedule-row"><div class="sched-time">16:00</div><div class="sched-activity"><strong>Drive back to Luton</strong> &mdash; School exteriors B-roll (wide shots ONLY, no identifiable children).</div></div>
+          <div class="schedule-row"><div class="sched-time">16:30</div><div class="sched-activity"><strong>Dutton PTC #4</strong> &mdash; Birth rates, demographics, forward-looking segment.</div></div>
+          <div class="schedule-row"><div class="sched-time">17:00</div><div class="sched-activity"><strong>&#128248; THE MONEY SHOT</strong> &mdash; Vantage point with Vauxhall site + airport. Golden hour light. Planes over empty factory. Spend time getting this right.</div></div>
+          <div class="schedule-row"><div class="sched-time">17:45</div><div class="sched-activity"><strong>Dutton PTC #5</strong> &mdash; Closing. The real lesson of Luton. Airport behind, natural light fading = atmosphere.</div></div>
+          <div class="schedule-row"><div class="sched-time">18:00</div><div class="sched-activity"><strong>WRAP</strong> &mdash; Backup footage, battery harvest, secure cards.</div></div>
+        </div>
+      </div>
+
+      <!-- Luton Storyline -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127916; Storyline &amp; Scene Breakdown</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p><strong>Central Thesis:</strong> Demographic change follows economic collapse. Luton is the clearest English case study &mdash; compressed timeline, well-documented.</p>
+        <br>
+        <p><strong>Act I: "What Was Built"</strong> (5&ndash;7 min) &mdash; The Vauxhall factory story. 37,000 jobs at peak, closed 2025. Vox pops with former workers.</p>
+        <p><strong>Act II: "What Left"</strong> (7&ndash;10 min) &mdash; The drive from Bury Park to Dunstable. Census data. The demographic boundary.</p>
+        <p><strong>Act III: "What Arrived"</strong> (7&ndash;10 min) &mdash; Bury Park footage. Framed through evolutionary psychology. Plus the dual radicalisation angle.</p>
+        <p><strong>Act IV: "What Comes Next"</strong> (5&ndash;7 min) &mdash; Birth rate data, school demographics. Closing shot: factory ruins + airport at golden hour.</p>
+      </div>
+
+      <!-- Research Graphs -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#128202; Research Data &amp; Graphs</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p style="margin-bottom:12px;">These graphics can be used as data overlays in post-production or as reference during filming PTCs.</p>
+        <div class="graph-grid">
+          <img src="images/02_vauxhall_employment.png" alt="Vauxhall employment 1905-2025" loading="lazy">
+          <p class="graph-caption">Vauxhall Luton: 120 years of rise and fall. Peak 37,000 employees.</p>
+
+          <img src="images/01_luton_ethnicity.png" alt="Luton ethnic composition 2001-2021" loading="lazy">
+          <p class="graph-caption">Luton ethnic composition across three census periods (2001, 2011, 2021).</p>
+
+          <img src="images/05_white_british_trajectory.png" alt="White British population trajectory 1991-2031" loading="lazy">
+          <p class="graph-caption">White British population decline &mdash; 82% (1991) to 36.2% (2021), projected ~28% by 2031.</p>
+
+          <img src="images/04_luton_vs_centralbeds.png" alt="Luton vs Central Bedfordshire comparison" loading="lazy">
+          <p class="graph-caption">Five miles apart, two different worlds: Luton vs Central Bedfordshire.</p>
+
+          <img src="images/03_births_fertility.png" alt="Births and fertility rate data" loading="lazy">
+          <p class="graph-caption">78.9% of Luton births involve at least one non-UK born parent. TFR: 2.00 (highest in England).</p>
+        </div>
+      </div>
+
+      <!-- Kit & Logistics -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127908; Kit &amp; Logistics</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Primary camera + 6 spare batteries minimum</div>
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Lapel mic (Dutton PTCs) + handheld mic (vox pops)</div>
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Drone + spare batteries &mdash; CHECK CAA airspace restrictions near Luton Airport</div>
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Dashcam / suction mount for the Bury Park &rarr; Dunstable drive sequence</div>
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Portable monitor for reviewing footage at lunch</div>
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> SD card backup drive</div>
+          <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Hire car for the day (all locations within 20 min of Luton centre)</div>
+        </div>
+      </div>
+
+      <!-- Legal & Safety -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#9888;&#65039; Legal &amp; Safety Notes</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><span class="check-icon">&#9888;&#65039;</span> All filming on public land &mdash; no permissions needed for exterior shots or street filming</div>
+          <div class="checklist-item"><span class="check-icon">&#9888;&#65039;</span> Vox pops: verbal consent on camera before rolling. Explain who you are and what it's for.</div>
+          <div class="checklist-item"><span class="check-icon">&#128683;</span> <strong>DO NOT</strong> film identifiable minors. School exteriors fine as wide establishing shots only.</div>
+          <div class="checklist-item"><span class="check-icon">&#9888;&#65039;</span> Bury Park: be respectful, visible, professional. Visible camera is safer. If asked to stop, comply and move to public road.</div>
+          <div class="checklist-item"><span class="check-icon">&#9888;&#65039;</span> Drone: check NATS/CAA restrictions for Luton Airport proximity. Have ground-level backups for every drone shot.</div>
+        </div>
+      </div>
+
+      <!-- Post-Production -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#127912; Post-Production Notes</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <div class="checklist">
+          <div class="checklist-item"><span class="check-icon">&#128202;</span> Data graphics needed: Luton ethnicity breakdown (2001/2011/2021), Vauxhall employment timeline, birth data by nationality, Luton vs Central Bedfordshire comparison</div>
+          <div class="checklist-item"><span class="check-icon">&#127902;</span> Archival footage to source: Vauxhall factory in operation, 2009 protest footage, EDL marches</div>
+          <div class="checklist-item"><span class="check-icon">&#127925;</span> Music: industrial/ambient for factory, contemplative for closing. Tone = melancholic, not angry.</div>
+          <div class="checklist-item"><span class="check-icon">&#9201;</span> Estimated edit: 3&ndash;5 days for 25&ndash;40 minute piece</div>
+        </div>
+      </div>
+
+      <!-- Bonus Content -->
+      <div class="expandable-header" onclick="toggleExpand(this)">
+        <h4>&#11088; Bonus / Backup Content Ideas</h4>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expandable-body">
+        <p><strong>The Airport as Migration Infrastructure</strong> &mdash; The symbolism of the factory of production replaced by infrastructure of movement. Could work as a Shorts piece.</p>
+        <br>
+        <p><strong>Luton Town FC &mdash; The Last Tribal Institution?</strong> &mdash; New 25,000-seat stadium at Power Court (2028/29). Football as the last collective identity anchor.</p>
+        <br>
+        <p><strong>The Hat Industry</strong> &mdash; Before Vauxhall, Luton was the hat-making capital of England. Same cycle: specialised industry &rarr; prosperity &rarr; collapse &rarr; displacement. Luton's been through it twice.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GENERAL PREP ==================== -->
+  <div style="margin-top:48px;" id="prep">
+    <div class="section-label">General Prep &amp; To-Do</div>
+
+    <div class="expandable-header open" onclick="toggleExpand(this)">
+      <h4>&#128197; Deadlines</h4>
+      <span class="expand-arrow">&#9660;</span>
+    </div>
+    <div class="expandable-body open">
+      <div class="checklist">
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> <strong>George: Prepare interview questions</strong> &mdash; Interesting questions ready for all three docs. <strong style="color:var(--red);">Due: Feb 26</strong></div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> <strong>George: Full equipment audit</strong> &mdash; Check all kit, batteries, cards, mics, drone. Confirm everything is working and packed. <strong style="color:var(--red);">Due: Feb 26</strong></div>
+      </div>
+    </div>
+
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <h4>&#128205; Hotels to Book</h4>
+      <span class="expand-arrow">&#9660;</span>
+    </div>
+    <div class="expandable-body">
+      <div class="checklist">
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> <strong>London hotel</strong> &mdash; Lap: Feb 28 &ndash; Mar 2 (4 nights). Matt &amp; George: Mar 1&ndash;2 (1&ndash;2 nights)</div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> <strong>Oxford hotel</strong> &mdash; George, Matt, Lap: Mar 3 (1 night)</div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> <strong>Luton hotel</strong> &mdash; Everyone: Mar 4 (1 night). Suggestion: Premier Inn Luton Town Centre or Hampton by Hilton at the airport.</div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> <strong>Post-filming</strong> &mdash; London hotel for George (Mar 5, flies out Mar 6). Lap &amp; Matt TBD.</div>
+      </div>
+    </div>
+
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <h4>&#128663; Transport</h4>
+      <span class="expand-arrow">&#9660;</span>
+    </div>
+    <div class="expandable-body">
+      <div class="checklist">
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Hire car for Oxford &rarr; Luton &rarr; London leg (Mar 4&ndash;5)</div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Oxford &rarr; Luton: ~1hr 15min via M40/M25/M1</div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Train option: Oxford &rarr; London Marylebone (1hr), then Thameslink to Luton (25 min)</div>
+        <div class="checklist-item"><input type="checkbox" onchange="toggleCheck(this)"> Luton filming: all locations within 20 min drive of town centre</div>
+      </div>
+    </div>
+
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <h4>&#128203; Key Times &amp; Daylight</h4>
+      <span class="expand-arrow">&#9660;</span>
+    </div>
+    <div class="expandable-body">
+      <div class="checklist">
+        <div class="checklist-item"><span class="check-icon">&#127749;</span> <strong>Sunrise (early Mar, London):</strong> ~06:38&ndash;06:46. Civil twilight starts ~30 min before.</div>
+        <div class="checklist-item"><span class="check-icon">&#127751;</span> <strong>Sunset (early Mar, London):</strong> ~17:40&ndash;17:48. Golden hour from ~17:00.</div>
+        <div class="checklist-item"><span class="check-icon">&#127774;</span> <strong>Luton Mar 5 specifically:</strong> Sunrise 06:38 / Sunset 17:48. Plan closing shot for 17:00&ndash;17:45.</div>
+        <div class="checklist-item"><span class="check-icon">&#128197;</span> <strong>Ed's constraints:</strong> Mon Mar 2 evening &mdash; dinner with daughter. Tue Mar 3 &mdash; Andrew Gold interview (N. London), then Oxford dinner &amp; speech.</div>
+        <div class="checklist-item"><span class="check-icon">&#128197;</span> <strong>George:</strong> Flies home Fri Mar 6 from London.</div>
+        <div class="checklist-item"><span class="check-icon">&#9200;</span> <strong>UK time zone:</strong> GMT (UTC+0). Clocks don't go forward until Mar 29.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  The Jolly Heretic &bull; March 2026 Filming Schedule
+</footer>
+
+<!-- Hidden Netlify form for checklist email notifications -->
+<form name="checklist-notify" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="item">
+  <input type="text" name="timestamp">
+  <input type="hidden" name="bot-field">
+</form>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#9650;</button>
+
+<script>
+// Toggle expandable sections
+function toggleExpand(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// Expand all / Collapse all
+function expandAll() {
+  document.querySelectorAll('.expandable-header:not(.open)').forEach(h => {
+    h.classList.add('open');
+    h.nextElementSibling.classList.add('open');
+  });
+}
+function collapseAll() {
+  document.querySelectorAll('.expandable-header.open').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.classList.remove('open');
+  });
+}
+
+// Interactive checkboxes — persist to localStorage + email notification
+function toggleCheck(cb) {
+  const item = cb.closest('.checklist-item');
+  item.classList.toggle('checked', cb.checked);
+  saveChecks();
+
+  // Send email notification when an item is checked off
+  if (cb.checked) {
+    const text = item.textContent.trim();
+    const formData = new URLSearchParams();
+    formData.append('form-name', 'checklist-notify');
+    formData.append('item', text);
+    formData.append('timestamp', new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString()
+    }).catch(() => {});
+  }
+}
+function saveChecks() {
+  const states = [];
+  document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(cb => {
+    states.push(cb.checked);
+  });
+  localStorage.setItem('jh-checks', JSON.stringify(states));
+}
+function loadChecks() {
+  try {
+    const states = JSON.parse(localStorage.getItem('jh-checks'));
+    if (!states) return;
+    document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach((cb, i) => {
+      if (states[i]) {
+        cb.checked = true;
+        cb.closest('.checklist-item').classList.add('checked');
+      }
+    });
+  } catch(e) {}
+}
+loadChecks();
+
+// Search
+const searchInput = document.getElementById('search-input');
+const searchClear = document.getElementById('search-clear');
+let searchTimeout;
+
+searchInput.addEventListener('input', function() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => runSearch(this.value.trim()), 200);
+  searchClear.classList.toggle('visible', this.value.length > 0);
+});
+
+function clearSearch() {
+  searchInput.value = '';
+  searchClear.classList.remove('visible');
+  runSearch('');
+  searchInput.focus();
+}
+
+function runSearch(q) {
+  // Remove old highlights
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+
+  // Remove no-match classes
+  document.querySelectorAll('.search-no-match').forEach(el => {
+    el.classList.remove('search-no-match');
+  });
+
+  if (!q) return;
+
+  const lower = q.toLowerCase();
+  let firstMatch = null;
+
+  // Walk all text nodes in the container and highlight matches
+  const container = document.querySelector('.container');
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
+  const matchedNodes = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.nodeValue.toLowerCase().includes(lower)) {
+      matchedNodes.push(node);
+    }
+  }
+
+  matchedNodes.forEach(node => {
+    const text = node.nodeValue;
+    const idx = text.toLowerCase().indexOf(lower);
+    if (idx === -1) return;
+
+    const before = text.substring(0, idx);
+    const match = text.substring(idx, idx + q.length);
+    const after = text.substring(idx + q.length);
+
+    const span = document.createElement('span');
+    span.className = 'search-highlight';
+    span.textContent = match;
+
+    const frag = document.createDocumentFragment();
+    if (before) frag.appendChild(document.createTextNode(before));
+    frag.appendChild(span);
+    if (after) frag.appendChild(document.createTextNode(after));
+
+    node.parentNode.replaceChild(frag, node);
+
+    // Open parent expandable section
+    let parent = span.closest('.expandable-body');
+    if (parent && !parent.classList.contains('open')) {
+      parent.classList.add('open');
+      const header = parent.previousElementSibling;
+      if (header && header.classList.contains('expandable-header')) {
+        header.classList.add('open');
+      }
+    }
+
+    if (!firstMatch) firstMatch = span;
+  });
+
+  // Hide non-matching event cards
+  document.querySelectorAll('.event-card').forEach(card => {
+    if (!card.textContent.toLowerCase().includes(lower)) {
+      card.classList.add('search-no-match');
+    }
+  });
+
+  // Scroll to first match
+  if (firstMatch) {
+    const navHeight = document.querySelector('.sticky-nav').offsetHeight + 20;
+    const top = firstMatch.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
+// Keyboard shortcut: Cmd/Ctrl+K to focus search
+document.addEventListener('keydown', function(e) {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    searchInput.focus();
+    searchInput.select();
+  }
+  if (e.key === 'Escape' && document.activeElement === searchInput) {
+    clearSearch();
+    searchInput.blur();
+  }
+});
+
+// Scroll to top button
+const scrollBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', function() {
+  scrollBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+// Sticky nav: highlight current section on scroll
+const navLinks = document.querySelectorAll('.sticky-nav a');
+const sections = [];
+navLinks.forEach(link => {
+  const id = link.getAttribute('href').slice(1);
+  const el = document.getElementById(id);
+  if (el) sections.push({ el, link });
+});
+
+window.addEventListener('scroll', function() {
+  const scrollY = window.scrollY + 80;
+  let current = sections[0];
+  for (const s of sections) {
+    if (s.el.offsetTop <= scrollY) current = s;
+  }
+  navLinks.forEach(l => l.classList.remove('active'));
+  if (current) current.link.classList.add('active');
+}, { passive: true });
+
+// Smooth scroll for nav links (offset for sticky nav)
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = this.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = document.querySelector('.sticky-nav').offsetHeight + 12;
+      window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
